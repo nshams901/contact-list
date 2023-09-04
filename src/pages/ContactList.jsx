@@ -6,10 +6,11 @@ const ContactList = () => {
     const [ state, setState] = useState({
         list: []
     })
-    const { data = [], list = []} = state
+    const { data = [], list = [], loading} = state
     useEffect(() => {
+        setState({...state, loading: true})
         getContactList().then(( res ) => {
-            setState({...state, data: res, list: res })
+            setState({...state, data: res, list: res, loading: false })
         })
     }, []);
 
@@ -29,6 +30,10 @@ const ContactList = () => {
             <input placeholder='Search your contact' onChange={ handleSearch } className=' border border-black rounded-md ml-2 p-2 focus:outline-none'/>
         </label>
     </div>
+    {
+        loading && 
+        <div className='flex justify-center'>Lodaing...</div>
+    }
     <div className='md:flex flex-wrap'>
      {
         list.map((item) => {
