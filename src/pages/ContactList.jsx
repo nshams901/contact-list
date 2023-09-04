@@ -32,7 +32,7 @@ const ContactList = () => {
     </div>
     {
         loading && 
-        <div className='flex justify-center'>Lodaing...</div>
+        <div className='flex justify-center text-2xl mt-24 font-bold'>Lodaing...</div>
     }
     <div className='md:flex flex-wrap'>
      {
